@@ -12,18 +12,18 @@ import NavOptions from "../components/NavOptions";
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <Image
-        style={{
-          width: 160,
-          height: 70,
-          resizeMode: "contain",
-        }}
-        source={require("../assets/TravelPulse.png")}
-      />
+      <View style={styles.container}>
+        <Image
+          style={{
+            width: 160,
+            height: 70,
+            resizeMode: "contain",
+          }}
+          source={require("../assets/TravelPulse.png")}
+        />
 
-      <NavOptions />
-    </View>
+        <NavOptions />
+      </View>
   );
 }
 
@@ -32,5 +32,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight-1 : 0,
     paddingLeft: 15,
+    backgroundColor:'white'
   },
 });
