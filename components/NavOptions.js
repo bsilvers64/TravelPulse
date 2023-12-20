@@ -4,6 +4,8 @@ import { FlatList } from "react-native";
 import tw from "twrnc";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { selectOrigin } from "../slices/navSlice";
 
 const data = [
   {
@@ -24,6 +26,8 @@ export default function NavOptions() {
 
   const navigation = useNavigation()
 
+  const origin = useSelector(selectOrigin)
+
   return (
     <FlatList
       data={data}
@@ -36,8 +40,10 @@ export default function NavOptions() {
           /* here the screen name is same as that passed in the namp property of the stack component in app.js */
           onPress={() => navigation.navigate(item.screen)}
           style={tw`pl-6 pb-2 pt-7 bg-gray-200 m-3 w-40 h-70`}
+          /* this will handle the case where you can't select any option until you select a location first */
+          disabled={!origin}
         >
-          <View>
+          <View style={tw`${!origin && "opacity-30"}`}>
             <Image
               style={{ width: 120, height: 120, resizeMode: "contain" }}
               source={item.image}

@@ -6,6 +6,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MapScreen from "./screens/MapScreen";
 
+import { LogBox } from "react-native";
+
+LogBox.ignoreAllLogs(true);
+
+
 export default function App() {
   const Stack = createStackNavigator();
 
@@ -13,7 +18,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
-          {/*         we include all the screens that we could possibly navigate to here - */}
+          {/* we include all the screens that we could possibly navigate to here - */}
           <Stack.Navigator>
             <Stack.Screen
               name="HomeScreen"

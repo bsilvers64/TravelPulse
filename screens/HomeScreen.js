@@ -41,6 +41,7 @@ export default function HomeScreen() {
           },
         }}
         onPress={(data, details = null) => {
+          //console.log(details.geometry.location);
           dispatch(setOrigin({
             location: details.geometry.location,
             description: data.description // info about the location
@@ -59,7 +60,7 @@ export default function HomeScreen() {
       ></GooglePlacesAutocomplete>
 
      {/*  navigation options -  */}
-     
+
       <NavOptions />
 
     </View>
