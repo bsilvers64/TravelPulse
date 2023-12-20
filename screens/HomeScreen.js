@@ -10,11 +10,14 @@ import {
 import React from "react";
 import NavOptions from "../components/NavOptions";
 import GOOGLE_MAPS_APIKEY from '../config/index'
-import GooglePlacesInput from "./GooglePlacesInput";
+import { useDispatch } from "react-redux";
+import { setOrigin, setDestination } from "../slices/navSlice";
 
 
 export default function HomeScreen() {
-  console.log(GOOGLE_MAPS_APIKEY);
+  const dispatch = useDispatch()
+
+
   return (
     <View style={styles.container}>
       <Image
@@ -26,6 +29,8 @@ export default function HomeScreen() {
         source={require("../assets/TravelPulse.png")}
       />
 
+      {/* Autocomplete searchbar - */}
+
       <GooglePlacesAutocomplete
         styles={{
           container: {
@@ -36,8 +41,12 @@ export default function HomeScreen() {
           },
         }}
         onPress={(data, details = null) => {
-          console.log(data);
-          console.log(details);
+          dispatch(setOrigin({
+            location: details.geometry.location,
+            description: data.description // info about the location
+          }))
+
+          dispatch(setDestination(null))
         }}
         placeholder="Where from?"
         debounce={400}
@@ -48,7 +57,11 @@ export default function HomeScreen() {
         fetchDetails={true}
         enablePoweredByContainer={false}
       ></GooglePlacesAutocomplete>
+
+     {/*  navigation options -  */}
+     
       <NavOptions />
+
     </View>
   );
 }

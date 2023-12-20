@@ -1,4 +1,3 @@
-import tw from "twrnc";
 import store from "./store";
 import { Provider } from "react-redux";
 import HomeScreen from "./screens/HomeScreen";

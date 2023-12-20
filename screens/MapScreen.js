@@ -1,12 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import tw from 'twrnc'
+import Map from '../components/Map'
+
+
 
 const MapScreen = () => {
   return (
     <View>
-      <Text>here is the amp screen.</Text>
+      <View style={tw`h-1/2`}>
+        <Map></Map>
+      </View>
+      <View style={tw`h-1/2`}></View>
     </View>
-  )
+  );
 }
 
 export default MapScreen
