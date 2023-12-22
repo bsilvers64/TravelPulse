@@ -42,10 +42,12 @@ export default function HomeScreen() {
         }}
         onPress={(data, details = null) => {
           //console.log(details.geometry.location);
-          dispatch(setOrigin({
-            location: details.geometry.location,
-            description: data.description // info about the location
-          }))
+          dispatch(
+            setOrigin({
+              location: details.geometry.location, // the coordinates
+              description: data.description, // info about the location
+            })
+          );
 
           dispatch(setDestination(null))
         }}

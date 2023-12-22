@@ -14,6 +14,7 @@ const GooglePlacesInput = () => {
         key: GOOGLE_MAPS_APIKEY,
         language: "en",
       }}
+      enablePoweredByContainer={false}
     />
   );
 };

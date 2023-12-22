@@ -1,4 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+
+/* the origin and destination will be objects of this structure -             
+  {
+    location: details.geometry.location, // the coordinates
+    description: data.description, // info about the location
+  } 
+*/
+
 const initialState = {
   origin: null,
   destination: null,

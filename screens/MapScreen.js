@@ -22,6 +22,7 @@ const Stack = createStackNavigator();
             component={NavigateCard}
             options={{
               headerShown: false,
+              gestureEnabled: true,
             }}
           />
           <Stack.Screen
@@ -29,6 +30,7 @@ const Stack = createStackNavigator();
             component={RideOptionsCard}
             options={{
               headerShown: false,
+              gestureEnabled: true,
             }}
           />
         </Stack.Navigator>

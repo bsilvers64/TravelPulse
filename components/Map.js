@@ -1,20 +1,57 @@
-import { StyleSheet, Text, View } from 'react-native'
-import MapView, {Marker} from "react-native-maps";
-import React from 'react';
+import { StyleSheet, Text, View } from "react-native";
+import MapView, { Marker } from "react-native-maps";
+import React, { useEffect, useRef } from "react";
 import tw from "twrnc";
-import { useSelector } from 'react-redux';
-import { selectOrigin } from '../slices/navSlice';
+import GOOGLE_MAPS_APIKEY from "../config/index";
+import { useSelector } from "react-redux";
+import { selectDestination, selectOrigin } from "../slices/navSlice";
+import MapViewDirections from "react-native-maps-directions";
 
 const Map = () => {
 
+  const mapRef = useRef(null);
   const origin = useSelector(selectOrigin);
   //console.log(origin);
 
+  const destination = useSelector(selectDestination);
+  //console.log(destination);
+
+useEffect(() => {
+  if (origin == null || destination == null) {
+    return;
+  }
+  console.log("HI");
+  console.log(origin.description);
+  console.log(destination.description);
+/*   mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
+    animated: true,
+    edgePadding: { top: 100, right: 100, bottom: 100, left: 100 },
+  }); */
+  mapRef.current.fitToCoordinates(
+    [
+      {
+        latitude: origin.location.lat,
+        longitude: origin.location.lng,
+      },
+      {
+        latitude: destination.location.lat,
+        longitude: destination.location.lng,
+      },
+    ],
+    {
+      animated: true,
+      edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+    }
+  );
+}, [origin, destination]);
+
+
   return (
     <MapView
+      ref={mapRef}
       mapType="hybrid"
       userInterfaceStyle="dark"
-      style={tw`h-100 w-90`}
+      style={tw`h-95 w-90`}
       initialRegion={{
         latitude: origin.location.lat,
         longitude: origin.location.lng,
@@ -22,6 +59,24 @@ const Map = () => {
         longitudeDelta: 0.008,
       }}
     >
+      {/*if we have both our origin and destination, we can show the directions*/}
+
+      {origin && destination ? (
+        <MapViewDirections
+          origin={{
+            latitude: origin.location.lat,
+            longitude: origin.location.lng,
+          }}
+          destination={{
+            latitude: destination.location.lat,
+            longitude: destination.location.lng,
+          }}
+          apikey={GOOGLE_MAPS_APIKEY}
+          strokeWidth={6}
+          strokeColor="black"
+        />
+      ) : null}
+
       {origin?.location && (
         <Marker
           coordinate={{
@@ -31,14 +86,25 @@ const Map = () => {
           title="Origin"
           description={origin.description}
           identifier="origin"
-          pinColor="orange"
+          image={require("../assets/location-pin.png")}
+        />
+      )}
+      {destination?.location && (
+        <Marker
+          coordinate={{
+            latitude: destination.location.lat,
+            longitude: destination.location.lng,
+          }}
+          title="Destination"
+          description={destination.description}
+          identifier="destination"
           image={require("../assets/location-pin.png")}
         />
       )}
     </MapView>
   );
-}
+};
 
-export default Map
+export default Map;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
