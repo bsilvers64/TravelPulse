@@ -62,7 +62,7 @@ export default function HomeScreen() {
         enablePoweredByContainer={false}
       ></GooglePlacesAutocomplete>
 
-     {/*  navigation options -  */}
+     {/*  ntravelTimeInformation: */}
 
       <NavOptions />
       <NavFavourites/>

@@ -70,7 +70,7 @@ export default function NavigateCard() {
             color="black"
             size={16}
           />
-          <Text style={tw`text-center`}> Eats</Text>
+          <Text style={tw`text-center`}>  Eats</Text>
         </TouchableOpacity>
       </View>
     </View>
