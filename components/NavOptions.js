@@ -33,7 +33,6 @@ export default function NavOptions() {
       data={data}
       horizontal
       keyExtractor={(item) => item.id}
-      style={tw`pt-14`}
      
       /* renderItem -> for each item what should we do ? */
       renderItem={({ item }) => (
@@ -43,7 +42,7 @@ export default function NavOptions() {
         /* here the screen name is same as that passed in the name property of the stack component in app.js */
           onPress={() => navigation.navigate(item.screen)}
           
-          style={tw`pl-6 pb-2 pt-7 bg-gray-200 m-3 w-40 h-70`}
+          style={tw`pl-6 pt-7 bg-gray-200 m-3 w-40 h-70`}
           
           /* this will handle the case where you can't select any option until you select a location first */
           disabled={!origin}

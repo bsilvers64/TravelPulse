@@ -20,9 +20,7 @@ useEffect(() => {
   if (origin == null || destination == null) {
     return;
   }
-  console.log("HI");
-  console.log(origin.description);
-  console.log(destination.description);
+
 /*   mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
     animated: true,
     edgePadding: { top: 100, right: 100, bottom: 100, left: 100 },

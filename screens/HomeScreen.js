@@ -12,6 +12,7 @@ import NavOptions from "../components/NavOptions";
 import GOOGLE_MAPS_APIKEY from '../config/index'
 import { useDispatch } from "react-redux";
 import { setOrigin, setDestination } from "../slices/navSlice";
+import NavFavourites from "../components/NavFavourites";
 
 
 export default function HomeScreen() {
@@ -64,7 +65,7 @@ export default function HomeScreen() {
      {/*  navigation options -  */}
 
       <NavOptions />
-
+      <NavFavourites/>
     </View>
   );
 }
@@ -75,5 +76,6 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight - 1 : 0,
     paddingLeft: 15,
     backgroundColor: "white",
+    paddingBottom: 80
   },
 });
