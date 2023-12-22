@@ -18,11 +18,12 @@ export default function NavigateCard() {
   return (
     <View style={tw`bg-white flex-1`}>
       <Text style={tw`text-center py-2 text-xl`}>Good Morning, Passenger!</Text>
-      <View style={tw`border-t border-gray-200 flex-shrink`}>
+      <View style={tw`border-t border-gray-200 flex-shrink z-99`}>
         <View>
           <GooglePlacesAutocomplete
             placeholder="Where to?"
             styles={toInputBoxStyles}
+            listViewDisplayed="auto"
             onPress={(data, details = null) => {
               // 'details' is provided when fetchDetails = true
               console.log(details.geometry.location);
@@ -46,13 +47,14 @@ export default function NavigateCard() {
           />
         </View>
       </View>
-      <NavFavourites />
+      <NavFavourites style={tw`z-1`} />
       <View
-        style={tw`flex-row mb-5 justify-evenly mt-auto py-2 border-t border-gray-100`}
+        style={tw`flex-row mb-5 justify-evenly mt-auto py-2 border-t border-gray-100 z-50`}
       >
         <TouchableOpacity
-          onPress={() => {navigation.navigate(RideOptionsCard
-            )}}
+          onPress={() => {
+            navigation.navigate(RideOptionsCard);
+          }}
           style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 ml-4 rounded-full`}
         >
           <Icon name="car" type="font-awesome" color="white" size={16} />
@@ -63,8 +65,12 @@ export default function NavigateCard() {
           style={tw`flex flex-row w-24 px-4 py-3 ml-4 rounded-full`}
         >
           <Icon
-            name="fast-food-outline" type="ionicon" color="black"size={16} />
-          <Text style={tw`text-center`}>  Eats</Text>
+            name="fast-food-outline"
+            type="ionicon"
+            color="black"
+            size={16}
+          />
+          <Text style={tw`text-center`}> Eats</Text>
         </TouchableOpacity>
       </View>
     </View>
