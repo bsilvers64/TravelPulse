@@ -111,7 +111,8 @@ But I will be skipping that step for now.
 
 We build a separate map component with react-native-maps package used in it.\
 And this component we use in our MapScreen. So as before with our autocomplete component, we captured the origin/place selected information, and we're updating our state with it. That state’s origin object we grab in our map component with useSelector and use its latitude and longitude to pass to the MapView which in turn renders that location to our map.
-![](https://lh7-us.googleusercontent.com/7jfi-CFcfHrWPqr89bFeymKAGEQTE7-F6Sb7tHYeyD6-gwxAXJqa-npMmvQXsD5JWRqSUIQ244ci1p6_KA7JgntHipUUEvEieoS0HHIRpH7lkig70q5Js0S8lBK24l3SECaau2PrmQjS8C2oK8ePEFg)
+
+![](https://github.com/bsilvers64/TravelPulse/blob/master/maps-demo.gif)
 
 17.  So our MapScreen is divided into 2 views, one is our rendered map and other is stack navigation which contains ride options and prices. 
 
