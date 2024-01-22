@@ -1,5 +1,15 @@
+***TravelPulse - a React Native Ride booking app***
+
+1. The app uses Tailwind CSS with React Native for stylish designs.
+2. It utilizes the Google Distance Matrix API to calculate travel time, distance, and cost.
+3. Real navigation is achieved through the Directions Google API.
+4. Google Places API is employed for accurate location-based navigation.
+5. React Native Navigation is used to smoothly move between different screens.
+6. React Native Elements enhances the overall app design.
 
 **Project demo-**
+
+https://github.com/bsilvers64/TravelPulse/assets/48654366/c020083c-1638-49a2-b9f0-ec547e36de88
 
 ****
 
